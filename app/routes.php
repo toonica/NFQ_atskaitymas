@@ -31,3 +31,13 @@ Route::group(["before" => "auth"], function()
         "uses" => "UserController@logoutAction"
     ]);
 });
+
+Route::get("/create", function()
+{
+    return View::make('create');
+});
+
+Route::any("/createAlbum", [
+    "as"   => "user/createAlbum",
+    "uses" => "UserController@createAction"
+]);
