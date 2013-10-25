@@ -2,14 +2,18 @@
 
 @if (Auth::check())
     <a href="{{ URL::route("user/logout") }}">
-logout
+        logout
     </a>
     <a href="/create">
-    Sukurti
+        sukurti albumą
     </a>
+<a href="/albums">
+albumai
+</a>
 @else
     <a href="{{ URL::route("user/login") }}">
 login
     </a>
+
 @endif
 

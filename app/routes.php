@@ -28,7 +28,7 @@ Route::group(["before" => "auth"], function()
 {
     Route::any("/logout", [
         "as"   => "user/logout",
-        "uses" => "UserController@logoutAction"
+        "uses" => "UserController@logoutAction",
     ]);
 });
 
@@ -39,5 +39,8 @@ Route::get("/create", function()
 
 Route::any("/createAlbum", [
     "as"   => "user/createAlbum",
-    "uses" => "UserController@createAction"
+    "uses" => "AlbumsController@createAction"
 ]);
+
+Route::resource('/albums', 'AlbumsController');
+
