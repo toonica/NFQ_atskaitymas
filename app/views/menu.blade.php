@@ -1,19 +1,20 @@
 
+<ul class="nav nav-justified">
+    @if (Auth::check())
+        <li><a href="{{ URL::route("user/logout") }}">
+            logout
+        </a></li>
+        <li><a href="/create">
+            sukurti albumą
+        </a></li>
+    <li><a href="/albums">
+    albumai
+    </a></li>
+    @else
+        <li><a href="{{ URL::route("user/login") }}">
+    login
+        </a></li>
 
-@if (Auth::check())
-    <a href="{{ URL::route("user/logout") }}">
-        logout
-    </a>
-    <a href="/create">
-        sukurti albumą
-    </a>
-<a href="/albums">
-albumai
-</a>
-@else
-    <a href="{{ URL::route("user/login") }}">
-login
-    </a>
-
-@endif
+    @endif
+</ul>
 

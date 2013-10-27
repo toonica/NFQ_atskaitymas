@@ -3,17 +3,6 @@ use Illuminate\Support\MessageBag;
 class AlbumsController extends BaseController{
     public function createAction() {
 
-        $errors = new MessageBag();
-
-        if ($old = Input::old("errors"))
-        {
-            $errors = $old;
-        }
-
-        $data = [
-            "errors" => $errors
-        ];
-
         if (Input::server("REQUEST_METHOD") == "POST")
         {
             $validator = Validator::make(Input::all(), [
@@ -25,29 +14,20 @@ class AlbumsController extends BaseController{
 
             if ($validator->passes())
             {
-                DB::table('albums')->insert(
-                    array('name' => Input::get("name"),
-                        'description' => Input::get("description"),
-                        'allDescription' => Input::get("allDescription"),
-                        'location' => Input::get("location")
-                    )
-                );
-
+                $album = new Albums;
+                $album->name = Input::get('name');
+                $album->description = Input::get('description');
+                $album->allDescription = Input::get('allDescription');
+                $album->location = Input::get('location');
+                $album->save();
+                return Redirect::route("albums/create")->with("message", "Albumas sėkmingai išsaugotas");
             }
 
-            $data["errors"] = new MessageBag([
-                "password" => [
-                    ""
-                ]
-            ]);
-
-            $data["username"] = Input::get("username");
-
-            return Redirect::route("user/createAlbum")
-                ->withInput($data);
+            return Redirect::route("albums/create")
+                ->withInput()->withErrors($validator);
         }
 
-        return View::make('/create', $data);
+        return View::make('albums/create');
 
 
     }

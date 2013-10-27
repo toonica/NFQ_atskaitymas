@@ -2,7 +2,8 @@
 @section("content")
     {{ Form::open([
         "route"        => "user/login",
-        "autocomplete" => "off"
+        "autocomplete" => "off",
+        "class"=>"form-login"
     ]) }}
     {{ Form::label("username", "Username") }}
     {{ Form::text("username", Input::old("username"), [

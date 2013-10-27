@@ -9,12 +9,4 @@ class Albums extends Eloquent  {
      */
     protected $table = 'albums';
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-
-
-
 }
