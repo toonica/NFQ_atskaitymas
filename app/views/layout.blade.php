@@ -13,7 +13,7 @@
     <div class="container">
 
         <div class="masthead">
-            <h3 class="text-muted">Super galerija</h3>
+            <h1 class="text-muted">Super galerija</h1>
             @include("menu")
         </div>
 

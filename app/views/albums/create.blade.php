@@ -14,7 +14,6 @@
 </div>
 @endif
 
-<form role="form">
     <div class="form-group">
         {{ Form::label("name", "Pavadinimas") }}
 
